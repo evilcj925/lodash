@@ -25,10 +25,56 @@ const _ ={
             return words
         
     },
+
+    pad(string, length){
+        if(string.length >= length){
+        return string;
+        };
+        const startPaddingLength = Math.floor((length - string.length) / 2);
+        const endPaddingLength = length - string.length - startPaddingLength;
+        const paddedString =' '.repeat(startPaddingLength) + string + ' '.repeat(endPaddingLength);
+        return paddedString;   
+    },  
+    
+    has(object, key){
+        const hasValue = object[key];
+        if(hasValue != undefined){
+            return true;
+        }return false;
+    },
+
+    invert(object){
+        let invertedObject = {};
+        for (let key in object){
+            const originalValue = object[key];
+            invertedObject = {originalValue : key}     
+            }
+            return invertedObject;
+        },
+    
+    findKey(object, predicate){
+        for (let key in object) {
+            let value = object[key];
+            let predicateReturnValue =predicate(value);
+            if(predicateReturnValue)
+                return key;
+            } 
+            undefined   
+            return undefined    
+        },
+       
+    drop(array, number){
+        if(number === undefined){
+            number = 1
+        }
+        newArray = array.slice(number)
+        return newArray
+    },     
+    
 };
 
 
-
+ 
 
 // Do not write or modify code below this line.
 module.exports = _;
